@@ -55,7 +55,7 @@ $(document).ready(function () {
         $.ajax({
             url: "https://http-cors-proxy.p.rapidapi.com/http://42.115.221.44:8080/devcamp-pizza365/drinks",
             "method": "GET",
-            "crossDomain":true,
+            "crossDomain": true,
             async: true,
             "headers": {
                 "origin": "example.com",
@@ -76,14 +76,14 @@ $(document).ready(function () {
     // hàm xử lý sự kiện load khuyến mãi theo từng ngày trong tuần
     function getDailyCampaign() {
         $.ajax({
-            url:"http://localhost:8080/campaigns",
-            type:"GET",
-            async:false,
-            success: function(res){
+            url: "http://localhost:8080/campaigns",
+            type: "GET",
+            async: false,
+            success: function (res) {
                 console.log(res);
                 $("#daily-campaign").html(res);
             },
-            error: function(){
+            error: function () {
                 console.log("Lỗi");
             }
         })
@@ -236,11 +236,18 @@ $(document).ready(function () {
     // hàm xử lý sự kiện gọi server tạo đơn hàng
     function callApiPostOrder(paramDataOder) {
         $.ajax({
-            url: "http://42.115.221.44:8080/devcamp-pizza365/orders",
-            type: "POST",
-            async: false,
-            contentType: "application/json;charset=UTF-8",
-            data: JSON.stringify(paramDataOder),
+            url: "https://http-cors-proxy.p.rapidapi.com/http://42.115.221.44:8080/devcamp-pizza365/orders",
+            "method": "POST",
+            async: true,
+            "crossDomain": true,
+            "headers": {
+                "content-type": "application/json;charset=UTF-8",
+                "x-requested-with": "example.com",
+                "X-RapidAPI-Host": "http-cors-proxy.p.rapidapi.com",
+                "X-RapidAPI-Key": "188d262f0fmsh10b995ea3ab6f84p18f85cjsn74ea52f55456"
+            },
+            "processData": false,
+            "data": JSON.stringify(paramDataOder),
             success: function (res) {
                 console.log(res);
                 resetForm(); // sự kiện ẩn và reset form modal
@@ -329,9 +336,16 @@ $(document).ready(function () {
     // hàm xử lý sự kiện gọi api kiểm tra voucher và lấy discount
     function callApiVoucher(paramVoucher) {
         $.ajax({
-            url: "http://42.115.221.44:8080/devcamp-voucher-api/voucher_detail/" + paramVoucher,
-            type: "GET",
-            async: false,
+            url: "https://http-cors-proxy.p.rapidapi.com/http://42.115.221.44:8080/devcamp-voucher-api/voucher_detail/" + paramVoucher,
+            "method": "GET",
+            async: true,
+            "crossDomain": true,
+            "headers": {
+                "origin": "example.com",
+                "x-requested-with": "example.com",
+                "X-RapidAPI-Host": "http-cors-proxy.p.rapidapi.com",
+                "X-RapidAPI-Key": "188d262f0fmsh10b995ea3ab6f84p18f85cjsn74ea52f55456"
+            },
             success: function (responseVoucher) {
                 $("#detail-modal .modal-body small").hide()
                 console.log(responseVoucher);
