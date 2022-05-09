@@ -238,8 +238,7 @@ $(document).ready(function () {
         $.ajax({
             url: "https://http-cors-proxy.p.rapidapi.com/http://42.115.221.44:8080/devcamp-pizza365/orders",
             "method": "POST",
-            async: true,
-            "crossDomain": true,
+            "crossDomain": true, async: true,
             "headers": {
                 "content-type": "application/json;charset=UTF-8",
                 "x-requested-with": "example.com",
@@ -338,8 +337,8 @@ $(document).ready(function () {
         $.ajax({
             url: "https://http-cors-proxy.p.rapidapi.com/http://42.115.221.44:8080/devcamp-voucher-api/voucher_detail/" + paramVoucher,
             "method": "GET",
-            async: true,
             "crossDomain": true,
+            async: true,
             "headers": {
                 "origin": "example.com",
                 "x-requested-with": "example.com",
